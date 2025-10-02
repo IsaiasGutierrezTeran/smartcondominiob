@@ -15,7 +15,7 @@ from drf_spectacular.views import (
     SpectacularSwaggerView,
     SpectacularRedocView,
 )
-from .api_views import APIWelcomeView
+from .api_views import APIWelcomeView, HealthCheckView, CustomLoginView
 
 def redirect_to_api(request):
     """Redirecciona la URL raíz a la vista de bienvenida de la API"""
@@ -29,9 +29,13 @@ urlpatterns = [
 
     # Vista de bienvenida de la API
     path('api/', APIWelcomeView.as_view(), name='api_welcome'),
+    
+    # Health check endpoint
+    path('api/health/', HealthCheckView.as_view(), name='api_health'),
 
     # Autenticación y registro de usuarios (se quedan en la raíz de la API)
     path('api/login/', obtain_auth_token, name='api_token_auth'),
+    path('api/auth/login/', CustomLoginView.as_view(), name='api_custom_login'),
     path('api/registro/', RegistroView.as_view(), name='api_registro'),
     path('api/dispositivos/registrar/', RegistrarDispositivoView.as_view(), name='registrar_dispositivo'),
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),

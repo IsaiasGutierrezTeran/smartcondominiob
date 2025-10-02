@@ -1,0 +1,21 @@
+# Variables de entorno necesarias para Render
+
+# === CONFIGURACIÓN BÁSICA ===
+DEBUG=False
+SECRET_KEY=tu-clave-secreta-super-larga-y-segura-aqui-genera-una-nueva
+
+# === BASE DE DATOS ===
+DATABASE_URL=postgresql://user:password@host:port/database
+# Render te proporcionará esta URL automáticamente si conectas una base de datos PostgreSQL
+
+# === STRIPE (Pagos) ===
+STRIPE_PUBLISHABLE_KEY=pk_test_tu_clave_publica_stripe
+STRIPE_SECRET_KEY=sk_test_tu_clave_secreta_stripe
+STRIPE_WEBHOOK_SECRET=whsec_tu_webhook_secret
+
+# === RENDER ESPECÍFICO ===
+RENDER_EXTERNAL_HOSTNAME=tu-app-name.onrender.com
+RENDER_EXTERNAL_URL=https://tu-app-name.onrender.com
+
+# === OPCIONAL ===
+PYTHON_VERSION=3.11.0

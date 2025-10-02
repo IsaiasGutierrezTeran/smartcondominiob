@@ -53,3 +53,30 @@ class APIWelcomeView(APIView):
                 "documentacion": "drf-spectacular (OpenAPI 3.0)"
             }
         }, status=status.HTTP_200_OK)
+
+
+class HealthCheckView(APIView):
+    """
+    Vista de health check para verificar el estado del servidor
+    """
+    permission_classes = [AllowAny]
+    
+    def get(self, request):
+        return Response({
+            "status": "healthy",
+            "message": "Server is running",
+            "timestamp": "2025-10-02"
+        }, status=status.HTTP_200_OK)
+
+
+class CustomLoginView(APIView):
+    """
+    Vista de login personalizada
+    """
+    permission_classes = [AllowAny]
+    
+    def post(self, request):
+        return Response({
+            "message": "Custom login endpoint",
+            "redirect": "/api/usuarios/login/"
+        }, status=status.HTTP_200_OK)
